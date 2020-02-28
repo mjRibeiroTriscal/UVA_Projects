@@ -1,0 +1,149 @@
+<!--
+*   @project     A1_AVA1_UVA_2020_1
+*   @author      Mário Jorge (mariojgmaster@yahoo.com.br)
+*   @Git         MJRibeiroTriscal (https://github.com/mjRibeiroTriscal)
+-->
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Look It</title>
+    <link rel="icon" href="./favicon.png" sizes="16x16 32x32" type="image/png">
+    <script src="./script.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+    <div id="container">
+        <header>
+            <ul class="progressbar">
+                <li id="stp1"></li>
+                <li id="stp2"></li>
+                <li id="stp3"></li>
+            </ul>
+            <h2 id="title"></h2>
+        </header>
+        <section>
+            <form id="personalInfo">
+                <div class="formBoxe">
+                    <input type="text" name="Nome" placeholder="Nome" />
+                    <input type="text" name="Sobrenome" placeholder="Sobrenome" />
+                    <input id="tel" type="tel" name="Telefone" placeholder="Telefone" />
+                </div>
+                <div class="formBoxe bb">
+                    <label for="dataNasc">Data de Nasc.</label>
+                    <select id="dataNasc">
+                        <option value="">dia</option>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="...">...</option>
+                    </select>
+                    <select>
+                        <option value="">mes</option>
+                        <option value="JAN">JAN</option>
+                        <option value="FEV">FEV</option>
+                        <option value="MAR">MAR</option>
+                        <option value="ABR">ABR</option>
+                        <option value="...">...</option>
+                    </select>
+                    <select>
+                        <option value="">ano</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                        <option value="...">...</option>
+                    </select>
+                    <div id="genero">
+                        <input type="radio" id="male" name="sexo" value="Masculino">
+                        <label for="male">Masculino</label>
+                        <input type="radio" id="female" name="sexo" value="Feminino">
+                        <label for="female">Feminino</label>
+                    </div>
+                </div>
+                <div class="formBoxe">
+                    <input type="text" id="cpf" name="cpf" placeholder="CPF">
+                    <input type="text" id="rg" name="rg" placeholder="RG">
+                </div>
+                <div class="formBoxe">
+                    <textarea placeholder="Fale mais sobre voce..."></textarea>
+                </div>
+            </form>
+            <form id="contactInfo">
+                <div class="formBoxe">
+                    <label for="country">Pais</label>
+                    <select id="country">
+                        <option value="Brasil">Brasil</option>
+                    </select>
+                    <label for="estado">Estado</label>
+                    <select id="estado">
+                        <option value="">--</option>
+                        <option value="RJ">RJ</option>
+                        <option value="ES">ES</option>
+                        <option value="MG">MG</option>
+                        <option value="SP">SP</option>
+                    </select>
+                    <input type="text" name="Cidade" placeholder="Cidade" />
+                    <label for="logradouro">Logradouro</label>
+                    <select id="logradouro">
+                        <option value="">--</option>
+                        <option value="Rua">Rua</option>
+                        <option value="Estrada">Estrada</option>
+                        <option value="Jardim">Jardim</option>
+                        <option value="Praça">Praça</option>
+                        <option value="Largo">Largo</option>
+                    </select>
+                </div>
+                <div class="formBoxe">
+                    <input type="text" name="Endereco" placeholder="Endereço" />
+                    <input type="number" name="numero" placeholder="Numero" />
+                </div>
+                <div class="formBoxe">
+                    <label style="display:block;margin-bottom:20px;">
+                        <strong>Hobbies</strong>
+                    </label>
+                    <input type="checkbox" id="fotografia" name="fotografia" value="Bike">
+                    <label for="fotografia">Fotografia</label><br>
+                    <input type="checkbox" id="futebol" name="futebol" value="Car">
+                    <label for="futebol">Futebol</label><br>
+                    <input type="checkbox" id="cozinhar" name="cozinhar" value="Boat">
+                    <label for="cozinhar">Cozinhar</label><br>
+                </div>
+            </form>
+            <form id="accountInfo">
+                <div class="formBoxe">
+                    <input type="text" name="email" placeholder="E-mail" />
+                    <input type="password" name="senha" placeholder="Senha" />
+                    <input type="password" name="confSenha" placeholder="Confirmacao de senha" />
+                </div>
+                <div class="formBoxe">
+                    <label for="segPerg">
+                        <select>
+                            <option>Qual o nome do seu primeiro professor</option>
+                            <option>Qual o seu time</option>
+                            <option>Quando se casou</option>
+                        </select>
+                    </label>
+                    <input type="text" id="segPerg" name="segPerg" placeholder="Pergunta de seguranca" />
+                </div>
+            </form>
+            <div id="subButton">
+                <button id="back">Anterior</button>
+                <button id="next">Próximo</button>
+            </div>
+        </section>
+        <footer>
+            <!-- <h5 style="color:rgb(18, 97, 160);">
+                Created by
+                <strong style="text-decoration:underline;font-size:16px;">
+                    Mario Jorge
+                </strong>
+            </h5> -->
+        </footer>
+    </div>
+    <div id="backBlue">
+        <img style="margin-left:20px;margin-top:20px;" src="./whiteC.PNG" width="100" />
+    </div>
+</body>
+</html>

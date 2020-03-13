@@ -89,16 +89,17 @@ input[type=submit] {
     border-radius: 10px;
 }
 
-input[type=submit]:hover {
-    background-color: rgba(0, 0, 255, 0.6);
-}
-
 input[type=submit]:active {
     background-color: rgba(0, 0, 255, 0.8);
 }
 
+input[type=submit]:hover {
+    background-color: rgba(0, 0, 255, 0.6);
+}
+
 .gridContainer {
     display: grid;
+    /* border: 1px solid red; */
     grid-template-columns: auto auto;
 }
 

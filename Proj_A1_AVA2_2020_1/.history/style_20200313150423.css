@@ -99,6 +99,7 @@ input[type=submit]:active {
 
 .gridContainer {
     display: grid;
+    /* border: 1px solid red; */
     grid-template-columns: auto auto;
 }
 

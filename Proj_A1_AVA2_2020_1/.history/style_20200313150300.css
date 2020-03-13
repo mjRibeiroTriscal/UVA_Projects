@@ -30,7 +30,7 @@ header {
     width: 100%;
     text-align: center;
     padding: 20px 0px;
-    background-color: rgba(0, 0, 255, 0.7)
+    background-color: rgba(0, 0, 255, 0.6)
 }
 
 header h2 {
@@ -85,12 +85,8 @@ input[type=submit] {
     padding: 10px;
     color: #FFF;
     font-weight: bold;
-    background-color: rgba(0, 0, 255, 0.7);
-    border-radius: 10px;
-}
-
-input[type=submit]:hover {
     background-color: rgba(0, 0, 255, 0.6);
+    border-radius: 10px;
 }
 
 input[type=submit]:active {
@@ -99,6 +95,7 @@ input[type=submit]:active {
 
 .gridContainer {
     display: grid;
+    /* border: 1px solid red; */
     grid-template-columns: auto auto;
 }
 

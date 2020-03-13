@@ -18,7 +18,7 @@ const j = url.get('desenvolvimento');
 const k = url.get('engenhariaSoftware');
 const l = url.get('redesComputadores');
 
-console.log(document.getElementById('nome'))
+console.log(document.getElementById('aaa'))
 document.getElementById('email').innerHTML = d
 document.getElementById('dataNasc').innerHTML = e
 document.getElementById('sexo').innerHTML = f

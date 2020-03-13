@@ -18,13 +18,6 @@ const j = url.get('desenvolvimento');
 const k = url.get('engenhariaSoftware');
 const l = url.get('redesComputadores');
 
-console.log(document.getElementById('nome'))
-document.getElementById('email').innerHTML = d
-document.getElementById('dataNasc').innerHTML = e
-document.getElementById('sexo').innerHTML = f
-document.getElementById('estCivil').innerHTML = g
-document.getElementById('areasInteresse').innerHTML = h
-
 console.log('nome >>> ' + c);
 console.log('email >>> ' + d);
 console.log('dataNasc >>> ' + e);

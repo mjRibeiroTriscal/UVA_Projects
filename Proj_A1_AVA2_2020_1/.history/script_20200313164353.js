@@ -18,14 +18,14 @@ const j = url.get('desenvolvimento');
 const k = url.get('engenhariaSoftware');
 const l = url.get('redesComputadores');
 
-console.log(document.getElementById('nome'))
-document.getElementById('email').innerHTML = d
-document.getElementById('dataNasc').innerHTML = e
-document.getElementById('sexo').innerHTML = f
-document.getElementById('estCivil').innerHTML = g
-document.getElementById('areasInteresse').innerHTML = h
+document.getElementById('nome') = c
+document.getElementById('email') = d
+document.getElementById('dataNasc') = e
+document.getElementById('sexo') = f
+document.getElementById('estCivil') = g
+document.getElementById('areasInteresse') =
 
-console.log('nome >>> ' + c);
+    console.log('nome >>> ' + c);
 console.log('email >>> ' + d);
 console.log('dataNasc >>> ' + e);
 console.log('sexo >>> ' + f);

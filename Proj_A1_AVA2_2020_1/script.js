@@ -31,8 +31,7 @@ let nameValidation = () => elemSizeValid('nome', 15, document.formUva.nome)
 
 let emailValidation = () => {
     let hasSpecialChar = document.getElementById('email').value.includes('@')
-    hasSpecialChar ? console.log('Tem "@"!') : console.log('Não tem "@"!')
-    elemSizeValid('email', 10, document.formUva.email)
+    hasSpecialChar ? elemSizeValid('email', 10, document.formUva.email) : elemHasError(true, document.formUva.email)
 }
 
 let dataNascValidation = () => {

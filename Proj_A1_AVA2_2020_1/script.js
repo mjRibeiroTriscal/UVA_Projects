@@ -98,11 +98,12 @@ let submeterForm = () => {
             if (radios[i].value == 'Solteiro') {
                 if (document.getElementById("dataNasc").value != "") {
                     calcularIdade() <= 15 ?
-                        elemHasError(true, document.formUva.dataNasc) :
-                        elemHasError(false, document.formUva.dataNasc)
+                    elemHasError(true, document.formUva.dataNasc) :
+                    elemHasError(false, document.formUva.dataNasc)
                 }
             }
         }
     }
-    document.formUva.submit()
+    // Validação Submit
+    // document.formUva.submit()
 }

@@ -28,7 +28,7 @@
             <form class="gridContainer" name="formUva" method="GET" action="./submit.html">
 
                 <div class="gridItem blockContainer">
-                    <label for="nome" class="labelFirst">Nome</label>
+                    <label for="nome" class="labelFirst">Nome Completo</label>
                     <input id="nome" type="text" name="nome" placeholder="ex.: Mário Jorge" />
                 </div>
                 <div class="gridItem blockContainer">
@@ -38,17 +38,17 @@
 
                 <div class="gridItem blockContainer">
                     <label for="dataNasc" class="labelFirst">Data de Nasc.</label>
-                    <input id="dataNasc" type="date" name="dataNasc" />
+                    <input id="dataNasc" type="date" name="dataNasc" onblur="dataNascValidation()" />
                 </div>
 
                 <div class="gridItem gridContainer blockContainer">
                     <h3 style="position:absolute;margin-top:-10px;">Sexo</h3>
                     <div class="gridItem">
-                        <input id="masc" type="radio" name="sexo" />
+                        <input id="masc" type="radio" name="sexo" value="M" />
                         <label for="masc">Masculino</label>
                     </div>
                     <div class="gridItem">
-                        <input id="fem" type="radio" name="sexo" />
+                        <input id="fem" type="radio" name="sexo" value="F" />
                         <label for="fem">Feminino</label>
                     </div>
                 </div>
@@ -56,23 +56,23 @@
                 <div class="gridItem gridContainer blockContainer">
                     <h3 style="position:absolute;margin-top:-10px;">Estado Civil</h3>
                     <div class="gridItem">
-                        <input id="solteiro" type="radio" name="estCivil" />
+                        <input id="solteiro" value="Solteiro" type="radio" name="estCivil" />
                         <label for="solteiro">Solteiro(a)</label>
                     </div>
                     <div class="gridItem">
-                        <input id="separado" type="radio" name="estCivil" />
+                        <input id="separado" value="Separado" type="radio" name="estCivil" />
                         <label for="separado">Separado(a)</label>
                     </div>
                     <div class="gridItem">
-                        <input id="divorciado" type="radio" name="estCivil" />
+                        <input id="divorciado" value="Divorciado" type="radio" name="estCivil" />
                         <label for="divorciado">Divorciado(a)</label>
                     </div>
                     <div class="gridItem">
-                        <input id="casado" type="radio" name="estCivil" />
+                        <input id="casado" value="Casado" type="radio" name="estCivil" />
                         <label for="casado">Casado(a)</label>
                     </div>
                     <div class="gridItem">
-                        <input id="viuvo" type="radio" name="estCivil" />
+                        <input id="viuvo" value="Viúvo" type="radio" name="estCivil" />
                         <label for="viuvo">Viúvo(a)</label>
                     </div>
                 </div>
@@ -102,7 +102,7 @@
                 </div>
 
                 <div class="gridItem itemFlex">
-                    <input type="submit" value="Enviar">
+                    <input type="button" value="Enviar" onclick="submeterForm()" >
                 </div>
 
             </form>

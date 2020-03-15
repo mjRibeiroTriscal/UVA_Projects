@@ -1,37 +1,108 @@
 /*
- *   @project     A1_AVA2_UVA_2020_1
- *   @author      Mário Jorge (mariojgmaster@yahoo.com.br)
- *   @Git         MJRibeiroTriscal (https://github.com/mjRibeiroTriscal)
- */
+*   @project     A1_AVA2_UVA_2020_1
+*   @author      Mário Jorge (mariojgmaster@yahoo.com.br)
+*   @Git         MJRibeiroTriscal (https://github.com/mjRibeiroTriscal)
+*/
 
-const url_string = window.location.search;
-const url = new URLSearchParams(url_string);
+let canSubmit = false
 
-const c = url.get('nome');
-const d = url.get('email');
-const e = url.get('dataNasc');
-const f = url.get('sexo');
-const g = url.get('estCivil');
-const h = url.get('analise');
-const i = url.get('bancoDados');
-const j = url.get('desenvolvimento');
-const k = url.get('engenhariaSoftware');
-const l = url.get('redesComputadores');
+let elemHasError = (condition, elemHasBorder) => {
+    condition ? elemHasBorder.style.borderBottomColor = 'red' : elemHasBorder.style.borderBottomColor = 'blue'
+}
 
-console.log(document.getElementById('nome'))
-document.getElementById('email').innerHTML = d
-document.getElementById('dataNasc').innerHTML = e
-document.getElementById('sexo').innerHTML = f
-document.getElementById('estCivil').innerHTML = g
-document.getElementById('areasInteresse').innerHTML = h
+function calcularIdade() {
+    currentDate = new Date
+    nascimento = new Date(document.getElementById("dataNasc").value)
+    console.log(nascimento)
+    var idade = currentDate.getFullYear() - nascimento.getFullYear()
+    if (new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()) <
+        new Date(currentDate.getFullYear(), nascimento.getMonth(), nascimento.getDate()))
+        idade--
+    return idade
+}
 
-console.log('nome >>> ' + c);
-console.log('email >>> ' + d);
-console.log('dataNasc >>> ' + e);
-console.log('sexo >>> ' + f);
-console.log('estCivil >>> ' + g);
-console.log('analise >>> ' + h);
-console.log('bancoDados >>> ' + i);
-console.log('desenvolvimento >>> ' + j);
-console.log('engenhariaSoftware >>> ' + k);
-console.log('redesComputadores >>> ' + l);
+let elemSizeValid = (elem, tam, elemAddress) => {
+    nameSize = document.getElementById(elem).value.length
+    let condition = nameSize < tam
+    elemHasError(condition, elemAddress)
+}
+
+let nameValidation = () => elemSizeValid('nome', 15, document.formUva.nome)
+
+let emailValidation = () => {
+    let hasSpecialChar = document.getElementById('email').value.includes('@')
+    hasSpecialChar ? console.log('Tem "@"!') : console.log('Não tem "@"!')
+    elemSizeValid('email', 10, document.formUva.email)
+}
+
+let dataNascValidation = () => {
+    currentDate = new Date()
+    let dt = document.getElementById("dataNasc").value
+    data = new Date(dt)
+    let dataCond = data <= currentDate
+    dataCond ? document.querySelector("#masc").focus() : 0
+    elemHasError(!dataCond, document.formUva.dataNasc)
+}
+
+window.addEventListener("load", () => {
+
+    // Lógica para página de Submit
+    const url_string = window.location.search;
+    const url = new URLSearchParams(url_string);
+    const nome = url.get('nome')
+    const email = url.get('email')
+    const dataNasc = url.get('dataNasc')
+    const sexo = url.get('sexo')
+    const estCivil = url.get('estCivil')
+    const analise = url.get('analise')
+    const bancoDados = url.get('bancoDados')
+    const desenvolvimento = url.get('desenvolvimento')
+    const engenhariaSoftware = url.get('engenhariaSoftware')
+    const redesComputadores = url.get('redesComputadores')
+    if (nome != null) {
+        let dataVal = ''
+        if (dataNasc != '') {
+            let aux = dataNasc.split('-')
+            dataVal = `${aux[2]}/${aux[1]}/${aux[0]}`
+            console.log('dataVal: ' + dataVal)
+        }
+        let valorSexo = []
+        sexo == 'M' ? valorSexo = 'Masculino' : valorSexo = 'Feminino'
+        let listAreasInteresse = []
+        analise == 'on' ? listAreasInteresse.push('Analise') : 0
+        bancoDados == 'on' ? listAreasInteresse.push('Banco de Dados') : 0
+        desenvolvimento == 'on' ? listAreasInteresse.push('Desenvolvimento') : 0
+        engenhariaSoftware == 'on' ? listAreasInteresse.push('Engenharia de Software') : 0
+        redesComputadores == 'on' ? listAreasInteresse.push('Redes de Computadores') : 0
+        document.getElementById('nome').innerHTML = nome
+        document.getElementById('email').innerHTML = email
+        document.getElementById('dataNasc').innerHTML = dataVal
+        document.getElementById('sexo').innerHTML = valorSexo
+        document.getElementById('estCivil').innerHTML = estCivil
+        document.getElementById('areasInteresse').innerHTML = listAreasInteresse.join(', ')
+    }
+
+})
+
+let submeterForm = () => {
+    // Validação Nome
+    nameValidation()
+    // Validação E-mail
+    emailValidation()
+    // Validação Data de Nascimento
+    dataNascValidation()
+    // Validação Estado Civil
+    var radios = document.getElementsByName("estCivil");
+    for (var i = 0; i < radios.length; i++) {
+        if (radios[i].checked) {
+            if (radios[i].value == 'Solteiro') {
+                if (document.getElementById("dataNasc").value != "") {
+                    calcularIdade() <= 15 ?
+                        elemHasError(true, document.formUva.dataNasc) :
+                        elemHasError(false, document.formUva.dataNasc)
+                }
+            }
+        }
+    }
+    document.formUva.submit()
+}

@@ -4,7 +4,12 @@
  *   @Git         MJRibeiroTriscal (https://github.com/mjRibeiroTriscal)
  */
 
-let canSubmit = [namePass = false, emailPass = false, dataNascPass = false, estCivilPass = false]
+let canSubmit = {
+    namePass: false,
+    emailPass: false,
+    dataNascPass: false,
+    estCivilPass: false,
+}
 
 let elemHasError = (condition, elemHasBorder) => {
     condition ? elemHasBorder.style.borderBottomColor = 'red' : elemHasBorder.style.borderBottomColor = 'blue'
@@ -13,6 +18,7 @@ let elemHasError = (condition, elemHasBorder) => {
 function calcularIdade() {
     currentDate = new Date
     nascimento = new Date(document.getElementById("dataNasc").value)
+    console.log(nascimento)
     var idade = currentDate.getFullYear() - nascimento.getFullYear()
     if (new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()) <
         new Date(currentDate.getFullYear(), nascimento.getMonth(), nascimento.getDate()))
@@ -26,21 +32,16 @@ let elemSizeValid = (elem, tam, elemAddress) => {
     elemHasError(condition, elemAddress)
 }
 
-let nameValidation = () => {
-    elemSizeValid('nome', 15, document.formUva.nome)
-    nomeTam = document.formUva.nome.value.length
-    nomeTam > 15 ? canSubmit[0] = true : canSubmit[0] = false
-}
+let nameValidation = () => elemSizeValid('nome', 15, document.formUva.nome)
 
 let emailValidation = () => {
     let hasSpecialChar = document.getElementById('email').value.includes('@')
     if (hasSpecialChar) {
         elemSizeValid('email', 10, document.formUva.email)
-        emailTam = document.formUva.email.value.length
-        emailTam > 10 ? canSubmit[1] = true : canSubmit[1] = false
+        canSubmit.emailPass = false
     } else {
         elemHasError(true, document.formUva.email)
-        canSubmit[1] = false
+        canSubmit.emailPass = true
     }
 }
 
@@ -51,8 +52,8 @@ let dataNascValidation = () => {
     let dataCond = data <= currentDate
     if (dataCond) {
         document.querySelector("#masc").focus()
-        canSubmit[2] = true
-    } else { canSubmit[2] = false }
+        canSubmit.emailPass = true
+    } else { canSubmit.emailPass = false }
     elemHasError(!dataCond, document.formUva.dataNasc)
 }
 
@@ -76,6 +77,7 @@ window.addEventListener("load", () => {
         if (dataNasc != '') {
             let aux = dataNasc.split('-')
             dataVal = `${aux[2]}/${aux[1]}/${aux[0]}`
+            console.log('dataVal: ' + dataVal)
         }
         let valorSexo = []
         sexo == 'M' ? valorSexo = 'Masculino' : valorSexo = 'Feminino'
@@ -108,26 +110,14 @@ let submeterForm = () => {
         if (radios[i].checked) {
             if (radios[i].value == 'Solteiro') {
                 if (document.getElementById("dataNasc").value != "") {
-                    if (calcularIdade() <= 15) {
-                        elemHasError(true, document.formUva.dataNasc)
-                        canSubmit[2] = false
-                    } else {
+                    calcularIdade() <= 15 ?
+                        elemHasError(true, document.formUva.dataNasc) :
                         elemHasError(false, document.formUva.dataNasc)
-                        canSubmit[2] = true
-                        canSubmit[3] = true
-                    }
                 }
             }
-            canSubmit[3] = true
         }
     }
     console.log('canSubmit: ' + JSON.stringify(canSubmit))
         // Validação Submit
-    if (canSubmit.includes(false)) {
-        console.log('Not Pass!');
-    } else {
-        console.log('Pass!')
-        document.formUva.submit()
-    }
-
+        // document.formUva.submit()
 }

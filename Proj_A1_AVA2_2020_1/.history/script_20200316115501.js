@@ -36,8 +36,7 @@ let emailValidation = () => {
     let hasSpecialChar = document.getElementById('email').value.includes('@')
     if (hasSpecialChar) {
         elemSizeValid('email', 10, document.formUva.email)
-        emailTam = document.formUva.email.value.length
-        emailTam > 10 ? canSubmit[1] = true : canSubmit[1] = false
+        canSubmit[1] = true
     } else {
         elemHasError(true, document.formUva.email)
         canSubmit[1] = false
@@ -111,6 +110,7 @@ let submeterForm = () => {
                     if (calcularIdade() <= 15) {
                         elemHasError(true, document.formUva.dataNasc)
                         canSubmit[2] = false
+                        canSubmit[3] = false
                     } else {
                         elemHasError(false, document.formUva.dataNasc)
                         canSubmit[2] = true
@@ -118,16 +118,15 @@ let submeterForm = () => {
                     }
                 }
             }
-            canSubmit[3] = true
         }
     }
     console.log('canSubmit: ' + JSON.stringify(canSubmit))
         // Validação Submit
     if (canSubmit.includes(false)) {
-        console.log('Not Pass!');
+        console.log('Não vai passar!');
     } else {
-        console.log('Pass!')
-        document.formUva.submit()
+        console.log('Vai passar!')
     }
 
+    // document.formUva.submit()
 }

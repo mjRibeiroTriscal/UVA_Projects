@@ -4,7 +4,12 @@
  *   @Git         MJRibeiroTriscal (https://github.com/mjRibeiroTriscal)
  */
 
-let canSubmit = [namePass = false, emailPass = false, dataNascPass = false, estCivilPass = false]
+let canSubmit = [
+    namePass = false,
+    emailPass = false,
+    dataNascPass = false,
+    estCivilPass = false,
+]
 
 let elemHasError = (condition, elemHasBorder) => {
     condition ? elemHasBorder.style.borderBottomColor = 'red' : elemHasBorder.style.borderBottomColor = 'blue'
@@ -26,21 +31,16 @@ let elemSizeValid = (elem, tam, elemAddress) => {
     elemHasError(condition, elemAddress)
 }
 
-let nameValidation = () => {
-    elemSizeValid('nome', 15, document.formUva.nome)
-    nomeTam = document.formUva.nome.value.length
-    nomeTam > 15 ? canSubmit[0] = true : canSubmit[0] = false
-}
+let nameValidation = () => elemSizeValid('nome', 15, document.formUva.nome)
 
 let emailValidation = () => {
     let hasSpecialChar = document.getElementById('email').value.includes('@')
     if (hasSpecialChar) {
         elemSizeValid('email', 10, document.formUva.email)
-        emailTam = document.formUva.email.value.length
-        emailTam > 10 ? canSubmit[1] = true : canSubmit[1] = false
+        canSubmit[emailPass] = true
     } else {
         elemHasError(true, document.formUva.email)
-        canSubmit[1] = false
+        canSubmit[emailPass] = false
     }
 }
 
@@ -51,8 +51,8 @@ let dataNascValidation = () => {
     let dataCond = data <= currentDate
     if (dataCond) {
         document.querySelector("#masc").focus()
-        canSubmit[2] = true
-    } else { canSubmit[2] = false }
+        canSubmit[dataNascPass] = true
+    } else { canSubmit[dataNascPass] = false }
     elemHasError(!dataCond, document.formUva.dataNasc)
 }
 
@@ -110,24 +110,24 @@ let submeterForm = () => {
                 if (document.getElementById("dataNasc").value != "") {
                     if (calcularIdade() <= 15) {
                         elemHasError(true, document.formUva.dataNasc)
-                        canSubmit[2] = false
+                        canSubmit[estCivilPass] = false
+                        canSubmit[dataNascPass] = false
                     } else {
                         elemHasError(false, document.formUva.dataNasc)
-                        canSubmit[2] = true
-                        canSubmit[3] = true
+                        canSubmit[estCivilPass] = true
+                        canSubmit[dataNascPass] = true
                     }
                 }
             }
-            canSubmit[3] = true
         }
     }
     console.log('canSubmit: ' + JSON.stringify(canSubmit))
         // Validação Submit
     if (canSubmit.includes(false)) {
-        console.log('Not Pass!');
+        console.log('Não vai passar!');
     } else {
-        console.log('Pass!')
-        document.formUva.submit()
+        console.log('Vai passar!')
     }
 
+    // document.formUva.submit()
 }

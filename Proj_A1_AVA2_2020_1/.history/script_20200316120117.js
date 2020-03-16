@@ -36,8 +36,7 @@ let emailValidation = () => {
     let hasSpecialChar = document.getElementById('email').value.includes('@')
     if (hasSpecialChar) {
         elemSizeValid('email', 10, document.formUva.email)
-        emailTam = document.formUva.email.value.length
-        emailTam > 10 ? canSubmit[1] = true : canSubmit[1] = false
+        canSubmit[1] = true
     } else {
         elemHasError(true, document.formUva.email)
         canSubmit[1] = false
@@ -111,14 +110,17 @@ let submeterForm = () => {
                     if (calcularIdade() <= 15) {
                         elemHasError(true, document.formUva.dataNasc)
                         canSubmit[2] = false
+                        canSubmit[3] = false
                     } else {
                         elemHasError(false, document.formUva.dataNasc)
                         canSubmit[2] = true
                         canSubmit[3] = true
                     }
                 }
+                canSubmit[3] = false
+            } else {
+                canSubmit[3] = true
             }
-            canSubmit[3] = true
         }
     }
     console.log('canSubmit: ' + JSON.stringify(canSubmit))
